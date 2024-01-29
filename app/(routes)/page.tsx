@@ -1,11 +1,16 @@
-const HomePage = () => {
+import getBillboard from "@/actions/get-billboard";
+import Billboard from "@/components/billboard";
+import Container from "@/components/ui/container";
+
+const HomePage = async () => {
+  const billboard = await getBillboard("67b956e2-7120-41c3-9802-0e1d77a44b56");
+ 
   return (
-    <div>
-      packages and web page editors now use Lorem Ipsum as their default model
-      text, and a search for 'lorem ipsum' will uncover many web sites still in
-      their infancy. Various versions have evolved over the years, sometimes by
-      accident, sometimes on purpose (injected humour and the like).
-    </div>
+    <Container>
+      <div className="space-y-10 pb-10 ">
+        <Billboard data={billboard} />
+      </div>
+    </Container>
   );
 };
 
