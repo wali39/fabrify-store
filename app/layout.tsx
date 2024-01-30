@@ -4,6 +4,7 @@ import "./globals.css";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import { useEffect } from "react";
+import Container from "@/components/ui/container";
 
 const font = Roboto({ subsets: ["cyrillic"], weight: ["400", "500", "700"] });
 
@@ -20,8 +21,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <Navbar />
-        {children}
+        <Container>
+          <Navbar />
+          {children}
+        </Container>
         <Footer />
       </body>
     </html>
