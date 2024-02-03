@@ -3,7 +3,6 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
-import { useEffect } from "react";
 import Container from "@/components/ui/container";
 
 const font = Roboto({ subsets: ["cyrillic"], weight: ["400", "500", "700"] });
@@ -24,8 +23,8 @@ export default function RootLayout({
         <Container>
           <Navbar />
           {children}
+          <Footer />
         </Container>
-        <Footer />
       </body>
     </html>
   );
