@@ -4,6 +4,8 @@ import "./globals.css";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import Container from "@/components/ui/container";
+import ModalProvider from "@/providers/modal-provider";
+import ToastProvider from "@/providers/toast-provider";
 
 const font = Roboto({ subsets: ["cyrillic"], weight: ["400", "500", "700"] });
 
@@ -21,6 +23,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <Container>
+          <ToastProvider/>
+          <ModalProvider/>
           <Navbar />
           {children}
           <Footer />
