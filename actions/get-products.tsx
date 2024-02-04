@@ -21,7 +21,7 @@ const getProducts = async (query: Query): Promise<Product[]> => {
       isFeatured: query.isFeatured,
     },
   });
-  const res = await fetch(url, {
+  const res = await fetch(modofiedUrl, {
     next: { revalidate: 0 },
   });
   return res.json();
