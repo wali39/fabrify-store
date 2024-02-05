@@ -37,6 +37,7 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
             </p>
           </div>
           <Currency value={data.price} />
+          {/* whsec_c4e07b4844e01d81cdde1d3920dd86ec39e76344e4b810de6ea1baa5a6d96c5 */}
         </div>
       </div>
     </li>

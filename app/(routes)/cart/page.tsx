@@ -1,10 +1,10 @@
 "use client";
 
-import Summary from "@/components/Summary";
 import CartItem from "@/components/cart-item";
 import Container from "@/components/ui/container";
 import useCart from "@/hooks/use-cart";
 import { useEffect, useState } from "react";
+import Summary from "./components/Summary";
 
 const CartPage = () => {
   const [isMount, setIsmount] = useState(false);

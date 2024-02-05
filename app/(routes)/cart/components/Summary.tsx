@@ -1,22 +1,38 @@
 "use client";
 
-import useCart from "@/hooks/use-cart";
-import Currency from "./ui/currency";
 import axios from "axios";
+import { useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+
+import useCart from "@/hooks/use-cart";
+import { toast } from "react-hot-toast";
+import Currency from "../../../../components/ui/currency";
 
 const Summary = () => {
+  const searchParams = useSearchParams();
+  const removeAll = useCart((state) => state.removeAll);
   const cartItems = useCart((state) => state.items);
+
+  useEffect(() => {
+    if (searchParams.get("success")) {
+      toast.success("Payment completed");
+      removeAll();
+    }
+    if (searchParams.get("canceled")) {
+      toast.error("Something went wrong");
+    }
+  }, [removeAll, searchParams]);
+
   const totalPrice = cartItems.reduce((total, item) => {
     return total + Number(item.price);
   }, 0);
 
   const onCheckout = async () => {
     const response = await axios.post(
-      `${process.env.NEXT_PBULIC_API_URL}/chekout`,
-      {
-        productIds: cartItems.map((item) => item.id),
-      }
+      `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
+      { productIds: cartItems.map((item) => item.id) }
     );
+    console.log(response);
     window.location = response.data.url;
   };
   return (
