@@ -13,11 +13,12 @@ const Billboard: React.FC<BillboardProps> = ({ data }) => {
           backgroundImage: `url(${data?.imageUrl})`,
           backgroundColor: "#C0C0C0	",
           backgroundBlendMode: "multiply",
+          backgroundPosition: "center",
         }}
       >
         <div className="h-full w-full flex flex-col justify-center items-center text-center gap-y-8">
-          <div className=" text-gray-300 font-bold text-3xl sm:text-5xl sm:max-w-xl lg:text-6xl  max-w-xs">
-            {data.label}
+          <div className=" text-gray-300 font-bold text-xl sm:text-5xl sm:max-w-xl lg:text-5xl  max-w-xs">
+            {data?.label}
           </div>
         </div>
       </div>

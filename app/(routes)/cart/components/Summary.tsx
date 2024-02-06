@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 import useCart from "@/hooks/use-cart";
 import { toast } from "react-hot-toast";
-import Currency from "../../../../components/ui/currency";
+import Currency from "@/components/ui/currency";
 
 const Summary = () => {
   const searchParams = useSearchParams();
@@ -32,7 +32,7 @@ const Summary = () => {
       `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
       { productIds: cartItems.map((item) => item.id) }
     );
-    console.log(response);
+
     window.location = response.data.url;
   };
   return (
@@ -47,7 +47,8 @@ const Summary = () => {
         </div>
         <button
           onClick={onCheckout}
-          className="bg-black text-white rounded-full w-full px-2 py-2 mt-6"
+          disabled={cartItems.length == 0}
+          className="bg-black text-white rounded-full w-full px-2 py-2 mt-6 disabled:cursor-not-allowed disabled:opacity-50"
         >
           Checkout
         </button>
